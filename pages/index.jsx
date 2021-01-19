@@ -12,7 +12,8 @@ export default function Home() {
 
   const ctc = ()=>{
     copy(text)
-    console.log("copies to your clipboard ",text)
+    console.log("copied to your clipboard ",text)
+    alert(text+" has been copied to your clipboard")
   }
 
   const translate = (text) => {
@@ -31,6 +32,11 @@ export default function Home() {
     }
     return newString;
   }
+
+  setTimeout(() => {
+    setText(translate("E_3 E)3").toUpperCase());
+    console.log("ejected")
+  }, 3000);
 
   const handleChange = (e) => {
     let {value} = e.target
@@ -60,7 +66,7 @@ export default function Home() {
             onClick={()=>{ctc()}}
           >
           <p
-            className="text-2xl text-center text-gray-700"
+            className="text-2xl text-center text-gray-700 font-bold"
           >
             {text}
           </p>
