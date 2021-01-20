@@ -6,6 +6,7 @@ import { useState } from 'react'
 export default function Home() {
 
   const [text, setText] = useState("waiting that you write")
+  const [titleText, setTitleText] = useState("Paste your text!!")
 
   const letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"," "];
   const chars   = ["@",";","'","$","3","_","&","-","8","+","(",")","?","!","/","9","0","1","4","#","5","7",":","2","*","6",'"'," "]
@@ -19,6 +20,7 @@ export default function Home() {
   const translate = (text) => {
     let newString=''
     if(text !== ""){
+      setTitleText("Copy your text!!")
       for (let i = 0; i < text.length; i++) {
         const char = text.charAt(i);
         let newChar = char.toLowerCase();
@@ -29,6 +31,8 @@ export default function Home() {
           newString += (newChar == char? letters[i] :"") 
         });
       }
+    }else{
+      setTitleText("Paste your text!!")
     }
     return newString;
   }
@@ -45,12 +49,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w-full h-screen bg-gray-700 flex flex-wrap justify-center ">
-        <div className="p-2  w-full  xl:w-3/4 bg-black flex flex-wrap justify-center items-end rounded-b-3xl display-flex shadow-2xl z-10">
-          <h1 className="text-8xl w-full text-gray-200 font-black text-center" >Paste your text!!</h1>
+        <div className="p-2  w-full  xl:w-3/4 bg-black flex flex-wrap justify-center items-center rounded-b-3xl display-flex shadow-2xl z-10">
+          <p className="text-8xl w-full text-gray-200 font-black text-center" >{titleText}</p>
           <input
             onChange={() => handleChange(event)}
             placeholder="here!"
-            className="rounded-xl shadow-sm  p-2 h-10 text-center "
+            className="rounded-xl shadow-sm sm:text-2xl p-2 h-10 text-center text-white bg-black ring-4 ring-gray-500 "
           />
         </div>
         <div
@@ -61,7 +65,7 @@ export default function Home() {
             onClick={()=>{ctc()}}
           >
           <p
-            className="text-2xl text-center text-gray-700 font-bold"
+            className="text-2xl sm:text-4xl p-3 rounded-xl hover:shadow-xl  text-center text-gray-700 font-bold"
           >
             {text}
           </p>
