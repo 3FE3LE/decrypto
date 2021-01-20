@@ -32,12 +32,7 @@ export default function Home() {
     }
     return newString;
   }
-
-  setTimeout(() => {
-    setText(translate("E_3 E)3").toUpperCase());
-    console.log("ejected")
-  }, 3000);
-
+  
   const handleChange = (e) => {
     let {value} = e.target
     setText(translate(value)|| "...");
