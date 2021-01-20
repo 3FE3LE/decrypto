@@ -32,7 +32,7 @@ export default function Home() {
     }
     return newString;
   }
-  
+
   const handleChange = (e) => {
     let {value} = e.target
     setText(translate(value)|| "...");
@@ -45,12 +45,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="w-full h-screen bg-gray-700 flex flex-wrap justify-center ">
-        <div className="p-2  w-full  xl:w-3/4 bg-black flex flex-wrap justify-center items-center rounded-b-3xl display-flex shadow-2xl z-10">
-          <h1 className="text-8xl text-gray-200 font-black text-center" >Paste your text!!</h1>
+        <div className="p-2  w-full  xl:w-3/4 bg-black flex flex-wrap justify-center items-end rounded-b-3xl display-flex shadow-2xl z-10">
+          <h1 className="text-8xl w-full text-gray-200 font-black text-center" >Paste your text!!</h1>
           <input
             onChange={() => handleChange(event)}
             placeholder="here!"
-            className="rounded-xl shadow-sm  p-2 h-10  my-12 text-center "
+            className="rounded-xl shadow-sm  p-2 h-10 text-center "
           />
         </div>
         <div
