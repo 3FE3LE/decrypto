@@ -84,7 +84,7 @@ export default function Home() {
         <div
           className="p-2 w-full relative  xl:w-3/4 -mt-10 bg-white flex flex-wrap justify-center items-center z-0"
         >
-          <h1 className="bg-black shadow-sm text-sm text-white font-bold rounded-t-2xl py-1 px-2 absolute left-0 bottom-0">byfranklicona</h1>
+          <h1 className="bg-black shadow-sm text-sm text-white font-bold rounded-2xl py-1 px-2 fixed sm:absolute left-5 bottom-5 ">byfranklicona</h1>
           <Tooltip
             title="copy to clipboard"
             onClick={()=>{ctc()}}
