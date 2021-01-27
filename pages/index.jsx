@@ -1,29 +1,34 @@
-import { Tooltip } from '@material-ui/core';
-import copy from 'copy-to-clipboard';
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+// libraries
+import { Tooltip } from '@material-ui/core';
+import copy from 'copy-to-clipboard';
+import swal from 'sweetalert';
 
 export default function Home() {
-
-  const [input, setInput] = useState("...")
-  const [text, setText] = useState("waiting that you write")
-  const [titleText, setTitleText] = useState("Paste your text!!")
-  
+// CONSTANS
   const letters =         ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"," "];
   const googleKeyboard  = ["@",";","'","$","3","_","&","-","8","+","(",")","?","!","/","9","0","1","4","#","5","7",":","2","*","6",'"'," "]
   const samsungKeyboard =     ['@',';','"','$','÷','%','^','&','£','*','¿','¡','?',',','!','(',')','+','=','#','/','€',':','×',"'",'_','-'," "]
-  
+// STATE
+  const [input, setInput] = useState("...")
+  const [text, setText] = useState("waiting that you write")
+  const [titleText, setTitleText] = useState("Paste your text!!")  
   const [keyboard, setKeyboard] = useState(googleKeyboard)
-
+// copy to clipboard
   const ctc = ()=>{
     copy(text)
-    console.log("copied to your clipboard ",text)
-    alert(text+" has been copied to your clipboard")
+    swal({
+      title: "Copied!",
+      text: text+" has been copied to your clipboard",
+      icon: "success",
+      button: "Aww yiss!",
+    });
   }
-
+// translate input text
   const translate = () => {
     let newString=''
-    if(input !== ""){
+    if(input == "..." || input !== ""){
       setTitleText("Copy your text!!")
       for (let i = 0; i < input.length; i++) {
         const char = input.charAt(i);
@@ -41,11 +46,11 @@ export default function Home() {
     }
     return newString;
   }
-
+// detecting changes on keyboard type and input text
   useEffect(() => {
     setText(translate())
   }, [keyboard,input])
-
+// set value on input
   const handleChange = (e) => {
     let {value} = e.target
     setInput(value)
@@ -64,7 +69,8 @@ export default function Home() {
           <p className="text-8xl w-full text-gray-200 font-black text-center" >{titleText}</p>
           <input
             onChange={() => handleChange(event)}
-            placeholder="here!"
+            placeholder="Click to paste your text"
+            initialValue={input}
             className="rounded-xl shadow-sm sm:text-2xl p-2 h-10 text-center text-white bg-black ring-4 ring-gray-500 "
           />
           <div className="flex flex-wrap w-full justify-center m-0">
@@ -92,7 +98,7 @@ export default function Home() {
           <p
             className="text-2xl sm:text-4xl p-3 rounded-xl hover:shadow-xl  text-center text-gray-700 font-bold"
           >
-            {text||"..."}
+            {text||"Click here to copy you text"}
           </p>
           </Tooltip>
           
