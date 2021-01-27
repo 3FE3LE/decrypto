@@ -61,7 +61,6 @@ export default function Home() {
       </Head>
       <main className="w-full h-screen bg-gray-700 flex flex-wrap justify-center ">
         <div className="p-2  w-full  xl:w-3/4 bg-black flex flex-wrap justify-center items-center rounded-b-3xl display-flex shadow-2xl z-10">
-          <h1 className="bg-black shadow-sm text-sm text-white font-bold rounded-t-2xl py-1 px-2 absolute left-0 bottom-0">byfranklicona</h1>
           <p className="text-8xl w-full text-gray-200 font-black text-center" >{titleText}</p>
           <input
             onChange={() => handleChange(event)}
@@ -72,19 +71,20 @@ export default function Home() {
             <span className="text-white w-full text-center" >Select your Keyboard</span>
           <img
             src="/google.svg"
-            className={`h-10 p-1 mx-4 rounded-lg text-sm ${keyboard===googleKeyboard?'bg-white text-black':''} `}
+            className={`h-10 p-1 bg-white mx-4 rounded-lg text-sm ${keyboard===googleKeyboard?'bg-white text-black':''} `}
             onClick={()=>setKeyboard(googleKeyboard)}
           />
           <img
             src="/samsung.svg"
-            className={`h-10 p-1  mx-4 rounded-lg bg-white  text-sm ${keyboard===samsungKeyboard?'bg-white text-black':''} `}
+            className={`h-10 p-1 bg-white mx-4 rounded-lg text-sm ${keyboard===samsungKeyboard?'bg-white text-black':''} `}
             onClick={()=>setKeyboard(samsungKeyboard)}
           />
           </div>
         </div>
         <div
-          className="p-2 w-full  xl:w-3/4 -mt-10 bg-white flex flex-wrap justify-center items-center z-0"
+          className="p-2 w-full relative  xl:w-3/4 -mt-10 bg-white flex flex-wrap justify-center items-center z-0"
         >
+          <h1 className="bg-black shadow-sm text-sm text-white font-bold rounded-t-2xl py-1 px-2 absolute left-0 bottom-0">byfranklicona</h1>
           <Tooltip
             title="copy to clipboard"
             onClick={()=>{ctc()}}
